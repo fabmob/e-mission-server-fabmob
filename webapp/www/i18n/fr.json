@@ -23,6 +23,8 @@
     },
     "slides": {
         "caption-survey": "Des enquêtes ciblées et personnalisées pour nos utilisateurs peuvent être envoyées et consultées.",
-        "caption-diary": "Un journal personnel contenant tout vos déplacements."
+        "caption-diary": "Un journal personnel contenant tout vos déplacements.",
+        "previous": "Précédent",
+        "next": "Suivant"
     }
 }

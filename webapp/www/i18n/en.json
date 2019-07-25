@@ -23,6 +23,8 @@
     },
     "slides": {
         "caption-survey": "Targeted surveys can be send and see by your users.",
-        "caption-diary": "Your personal diary containing all your trips."
+        "caption-diary": "Your personal diary containing all your trips.",
+        "previous": "Previous",
+        "next": "Next"
     }
 }
