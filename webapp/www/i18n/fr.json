@@ -1,0 +1,28 @@
+{
+    "title": "Traceur de mobilité Fabmob",
+    "home": "Accueil",
+    "heatmap": "Carte thermique",
+    "metrics": "Données",
+    "intro": {
+        "presentation": "Le Traceur de Mobilité Fabmob est un projet open-source de recueil, de partage et d'analyse de traces individuelles de mobilité.",
+        "partner": "Le projet est un projet de l'assocation Fabrique de Mobilités soutenue par l'ADEME qui vise à développer des communs dans le domaine de la mobilité"
+    },
+    "personal": {
+        "title": "Un contenu personnalisé",
+        "diary": "L'application vous propose un Journal personnalisé avec des informations sur vos trajets comme la distance parcourue ou le temps mis mais aussi les modes de transports utilisés !",
+        "metrics": "Vous pouvez aussi consulter votre Tableau de bord pour connaître votre empreinte carbone, les calories brûlées ainsi que vos statistiques."
+    },
+    "code-privacy": {
+        "title": "Code et Confidentialité",
+        "visibility": "Le projet est un fork de E-Mission disponible sur GitHub sous licence open-source BSD. Vous pouvez donc voir ce que nous collectons ainsi que les analyses qui sont réalisées et les résultats affichés.",
+        "github": "Voir sur GitHub",
+        "join-us":{
+            "site": "Vous souhaitez tester l'application ? Contactez-nous sur notre site.",
+            "mail": "Ou directement à l'adresse email suivante :"
+        }
+    },
+    "slides": {
+        "caption-survey": "Des enquêtes ciblées et personnalisées pour nos utilisateurs peuvent être envoyées et consultées.",
+        "caption-diary": "Un journal personnel contenant tout vos déplacements."
+    }
+}

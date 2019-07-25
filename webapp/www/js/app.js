@@ -6,7 +6,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
-                           'starter.directives', 'ui.bootstrap', 'monospaced.qrcode'])
+                           'starter.directives', 'ui.bootstrap', 'monospaced.qrcode','pascalprecht.translate'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -24,7 +24,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $compileProvider) {
+.config(function($stateProvider, $urlRouterProvider, $compileProvider, $translateProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -73,4 +73,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home');
 
+  // Allow the use of MessageForm interpolation for Gender and Plural.
+  $translateProvider.useSanitizeValueStrategy('escape');
+
+  // Define where we can find the .json and the fallback language
+  $translateProvider
+  .fallbackLanguage('en')
+  .registerAvailableLanguageKeys(['en', 'fr'], {
+  'en_*': 'en',
+  'fr_*': 'fr',
+  '*': 'en'
+  })
+  .determinePreferredLanguage()
+  .useStaticFilesLoader({
+  prefix: 'i18n/',
+  suffix: '.json'
+  });
 });
