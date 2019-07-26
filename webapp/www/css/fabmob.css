@@ -1,0 +1,97 @@
+.bar {
+    background-color:#97B837;
+    border-style: none;
+    color: white; 
+}
+
+.bar .button {
+    color: white;
+}
+
+
+/* Home Page */
+.emission-docs-masthead {
+    text-align: center;
+    height: 100%;
+    position: relative;
+    padding: 0px 0px;
+    color: black;
+    background-color: white;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0,0,0,.1);
+}
+
+#carouselIntro .carousel-caption {
+    width: 50%;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    filter: invert(100%);
+}
+
+.page {
+    height: 95vh;
+    padding-top: 3%; 
+}
+
+.metric-half {
+    float: left;
+     width: 100%;
+     border-radius: 5px;
+     background-color: white;
+     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.03), 0 2px 3px rgba(0, 0, 0, 0.05);  
+     color: #97B837;
+     height: 30px;
+     overflow: hidden;
+     position: relative;
+   }
+   
+   .metric-chart-button {
+     width: 50%;
+     position: absolute;
+     left: 50%;
+     height: 30px;
+     font-weight: 700;
+     overflow: hidden;
+     border-top-right-radius: 5px;
+     border-bottom-right-radius: 5px;
+   }
+   .metric-chart-button-active {
+     width: 50%;
+     position: absolute;
+     left: 50%;
+     height: 30px;
+     background-color: #97B837;
+     color: white;
+     font-weight: 700;
+     overflow: hidden;
+     border-top-right-radius: 5px;
+     border-bottom-right-radius: 5px;
+   }
+   .metric-summary-button {
+     width: 50%;
+     position: absolute;
+     border-right-color: #ccc;
+     border-right-style: solid;
+     border-right-width: 1px;
+     height: 30px;
+     font-weight: 700;
+     overflow: hidden;
+     border-top-left-radius: 5px;
+     border-bottom-left-radius: 5px;
+   }
+   .metric-summary-button-active {
+     width: 50%;
+     position: absolute;
+     border-right-color: #ccc;
+     border-right-style: solid;
+     border-right-width: 1px;
+     height: 30px;
+     background-color: #97B837;
+     color: white;
+     font-weight: 700;
+     overflow: hidden;
+     border-top-left-radius: 5px;
+     border-bottom-left-radius: 5px;
+   }

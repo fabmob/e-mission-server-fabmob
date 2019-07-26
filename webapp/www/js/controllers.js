@@ -2,7 +2,7 @@
 
 angular.module('starter.controllers', ['starter.heatmap', 'starter.metrics'])
 
-.controller('HomeCtrl', function($scope) {
+.controller('HomeCtrl', function($scope, $translate) {
     $scope.active = 0;
     $scope.aggregateSlides = [];
     $scope.personalSlides = [];
@@ -11,34 +11,34 @@ angular.module('starter.controllers', ['starter.heatmap', 'starter.metrics'])
     var addIntroSlides = function() {
         $scope.introSlides.push({
             image: 'img/intro/diary_explain.png',
-            text: 'background data collection of trips and user reported incident data',
+            text: $translate.instant('slides.caption-diary'),
             id: 0
         });
-        $scope.introSlides.push({
-            image: 'img/intro/heatmap_explain.png',
-            text: 'heatmaps for counting trips and visualizing stress',
-            id: 1
-        });
-        $scope.introSlides.push({
-            image: 'img/intro/game_explain.png',
-            text: 'habitica integration automatically gives points for every km walked and biked',
-            id: 2
-        });
-        $scope.introSlides.push({
-            image: 'img/intro/incident_report_explain.png',
-            text: 'users are prompted at the end of every trip to report incidents',
-            id: 3
-        });
+        // $scope.introSlides.push({
+        //     image: 'img/intro/heatmap_explain.png',
+        //     text: 'heatmaps for counting trips and visualizing stress',
+        //     id: 1
+        // });
+        // $scope.introSlides.push({
+        //     image: 'img/intro/game_explain.png',
+        //     text: 'habitica integration automatically gives points for every km walked and biked',
+        //     id: 2
+        // });
+        // $scope.introSlides.push({
+        //     image: 'img/intro/incident_report_explain.png',
+        //     text: 'users are prompted at the end of every trip to report incidents',
+        //     id: 3
+        // });
         $scope.introSlides.push({
             image: 'img/intro/targeted_survey_explain.png',
-            text: 'targeted surveys can be sent to regular users to capture public input',
-            id: 4
+            text: $translate.instant('slides.caption-survey'),
+            id: 1
         });
-        $scope.introSlides.push({
-            image: 'img/intro/extension_explain.png',
-            text: 'customizing the UI while retaining native functionality is simple',
-            id: 5
-        });
+        // $scope.introSlides.push({
+        //     image: 'img/intro/extension_explain.png',
+        //     text: 'customizing the UI while retaining native functionality is simple',
+        //     id: 5
+        // });
     };
 
     var addAggregateSlides = function() {

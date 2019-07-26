@@ -1,0 +1,30 @@
+{
+    "title": "Fabmob mobility tracker",
+    "home": "Home",
+    "heatmap": "Heatmap",
+    "metrics": "Metrics",
+    "intro": {
+        "presentation": "The Fabmob mobility tracker is an open-source solution for collecting, sharing and analysing personal mobility smartphoen tracking data.",
+        "partner": "The Fabrique de Mobilités is currently working on this project with the help of the ADEME and want to develop a mobility tracking common."
+    },
+    "personal": {
+        "title": "Personal",
+        "diary": "The phone app provides a personalized travel diary, with information about times, distances, trajectories and travel modes.",
+        "metrics": "You can also check the Dashboard to access your calorie consummation, your carbon footprint or your metrics."
+    },
+    "code-privacy":{
+        "title": "Code and Privacy",
+        "visibility": "The project is a fork of E-Mission which is available on GitHub under an open source BSD license. So you have a complete visibility into the data that we collect, the analysis that we perform on it, and the results that we display.",
+        "github": "View on GitHub",
+        "join-us":{
+            "site": "You want to test the app ? Contact us on our website.",
+            "mail": "Or directly at:"
+        }
+    },
+    "slides": {
+        "caption-survey": "Targeted surveys can be send and see by your users.",
+        "caption-diary": "Your personal diary containing all your trips.",
+        "previous": "Previous",
+        "next": "Next"
+    }
+}
