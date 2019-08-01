@@ -1,7 +1,21 @@
 {
     "title": "Traceur de mobilité Fabmob",
     "home": "Accueil",
-    "heatmap": "Carte thermique",
+    "heatmap": {
+        "title": "Carte thermique",
+        "counts": "Déplacements",
+        "from": "Du :",
+        "to": "Au :",
+        "get": "Go !",
+        "all": "Tous",
+        "none": "Aucun",
+        "bicycling": "Vélo",
+        "in-vehicle": "Véhicule",
+        "walking": "Marche",
+        "loading": "Chargement...",
+        "select-travel-mode": "Sélectionnez un moyen de locomotion :",
+        "cancel": "Annuler"
+    },
     "metrics": "Données",
     "intro": {
         "presentation": "Le Traceur de Mobilité Fabmob est un projet open-source de recueil, de partage et d'analyse de traces individuelles de mobilité.",

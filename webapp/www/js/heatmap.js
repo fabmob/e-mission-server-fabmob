@@ -4,9 +4,9 @@ angular.module('starter.heatmap', ['ui-leaflet', 'emission.plugin.logger',
                                    'emission.incident.posttrip.manual'])
 
 .controller('HeatmapCtrl', function($scope, $ionicLoading, $ionicActionSheet, $http,
-                                    leafletData, PostTripManualMarker, Logger) {
+                                    leafletData, PostTripManualMarker, Logger, $translate) {
   $scope.mapCtrl = {};
-
+  $scope.lang = $translate.use();
   angular.extend($scope.mapCtrl, {
     defaults : {
       tileLayer: 'http://tile.stamen.com/terrain/{z}/{x}/{y}.png',
@@ -24,16 +24,18 @@ angular.module('starter.heatmap', ['ui-leaflet', 'emission.plugin.logger',
     }
   });
 
-  $scope.getPopRoute = function() {
+  $scope.getPopRoute = function () {
     $scope.countData.isLoading = true;
+    var fromDate = $scope.selectCtrl.fromDate;
+    var toDate = $scope.selectCtrl.toDate;
     var data = {
       modes: $scope.selectCtrl.modes,
-      from_local_date: $scope.selectCtrl.fromDate,
-      to_local_date: $scope.selectCtrl.toDate,
+      start_time: moment(fromDate.year + "-" + fromDate.month + "-" + fromDate.day).unix(),
+      end_time: moment(toDate.year + "-" + toDate.month + "-" + toDate.day).unix(),
       sel_region: null
     };
     Logger.log("Sending data "+JSON.stringify(data));
-    return $http.post("/result/heatmap/pop.route/local_date", data)
+    return $http.post("/result/heatmap/pop.route/timestamp", data)
     .then(function(response) {
       if (angular.isDefined(response.data.lnglat)) {
         Logger.log("Got points in heatmap "+response.data.lnglat.length);
@@ -74,18 +76,18 @@ angular.module('starter.heatmap', ['ui-leaflet', 'emission.plugin.logger',
    */
 
   $scope.modeOptions = [
-      {text: "ALL", value:null},
-      {text: "NONE", value:[]},
-      {text: "BICYCLING", value:["BICYCLING"]},
-      {text: "WALKING", value:["WALKING", "ON_FOOT"]},
-      {text: "IN_VEHICLE", value:["IN_VEHICLE"]}
+      {text: $translate.instant('heatmap.all'), value:null},
+      {text: $translate.instant('heatmap.none'), value:[]},
+      {text: $translate.instant('heatmap.bicycling'), value:["BICYCLING"]},
+      {text: $translate.instant('heatmap.walking'), value:["WALKING", "ON_FOOT"]},
+      {text: $translate.instant('heatmap.in-vehicle'), value:["IN_VEHICLE"]}
     ];
 
   $scope.changeMode = function() {
     $ionicActionSheet.show({
       buttons: $scope.modeOptions,
-      titleText: "Select travel mode",
-      cancelText: "Cancel",
+      titleText: $translate.instant('heatmap.select-travel-mode'),
+      cancelText: $translate.instant('heatmap.cancel'),
       buttonClicked: function(index, button) {
         $scope.selectCtrl.modeString = button.text;
         $scope.selectCtrl.modes = button.value;
@@ -159,13 +161,24 @@ angular.module('starter.heatmap', ['ui-leaflet', 'emission.plugin.logger',
 
   var initSelect = function() {
     var now = moment();
-    var dayago = moment().subtract(1, 'd');
+    // var dayago = moment().subtract(1, 'd');
+    var monthago = moment().subtract(1, 'months');
     $scope.selectCtrl.showStress = false;
     $scope.selectCtrl.showCount = true;
     $scope.selectCtrl.modes = null;
-    $scope.selectCtrl.modeString = "ALL";
-    $scope.selectCtrl.fromDate = moment2Localdate(dayago)
-    $scope.selectCtrl.toDate = moment2Localdate(now);
+    $scope.selectCtrl.modeString = $translate.instant('heatmap.all')
+    // $scope.selectCtrl.fromDate = moment2Localdate(dayago);
+    // $scope.selectCtrl.toDate = moment2Localdate(now);
+    $scope.selectCtrl.fromDate = {
+      year: monthago.year(),
+      month: monthago.month() + 1,
+      day: monthago.date()
+    }
+    $scope.selectCtrl.toDate = {
+      year: now.year(),
+      month: now.month() + 1,
+      day: now.date()
+    }
     if ($scope.selectCtrl.toDate.day < $scope.selectCtrl.fromDate.day) {
        var fd = $scope.selectCtrl.fromDate;
        $scope.selectCtrl.toDate.day = moment(fd.year+"-"+fd.month,
@@ -238,7 +251,7 @@ angular.module('starter.heatmap', ['ui-leaflet', 'emission.plugin.logger',
   var setSelData = function(map, selData) {
     if (selData.isLoading == true) {
       $ionicLoading.show({
-          template: 'Loading...'
+          template: $translate.instant('heatmap.loading')
       });
       // Don't set any layer - it will be filled in when the load completes
     } else {
@@ -289,7 +302,7 @@ angular.module('starter.heatmap', ['ui-leaflet', 'emission.plugin.logger',
       sel_region: null
     };
     Logger.log("Sending data "+JSON.stringify(data));
-    return $http.post("/result/heatmap/incidents/local_date", data)
+    return $http.post("/result/heatmap/incidents/timestamp", data)
     .then(function(response) {
       if (angular.isDefined(response.data.incidents)) {
         Logger.log("Got incidents"+response.data.incidents.length);
