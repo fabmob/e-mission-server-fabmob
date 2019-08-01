@@ -36,7 +36,7 @@
 }
 
 .metric-half {
-    float: left;
+    /* float: left; */
      width: 100%;
      border-radius: 5px;
      background-color: white;
@@ -50,7 +50,7 @@
    .metric-chart-button {
      width: 50%;
      position: absolute;
-     left: 50%;
+     /* left: 50%; */
      height: 30px;
      font-weight: 700;
      overflow: hidden;
@@ -59,15 +59,17 @@
    }
    .metric-chart-button-active {
      width: 50%;
-     position: absolute;
-     left: 50%;
+     position: relative;
      height: 30px;
+     left: 25%;
      background-color: #97B837;
      color: white;
      font-weight: 700;
      overflow: hidden;
+     border-top-left-radius: 5px;
      border-top-right-radius: 5px;
      border-bottom-right-radius: 5px;
+     border-bottom-left-radius: 5px;
    }
    .metric-summary-button {
      width: 50%;

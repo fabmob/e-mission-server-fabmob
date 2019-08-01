@@ -1,7 +1,21 @@
 {
     "title": "Fabmob mobility tracker",
     "home": "Home",
-    "heatmap": "Heatmap",
+    "heatmap": {
+        "title": "Heatmap",
+        "counts": "Counts",
+        "from": "From:",
+        "to": "To:",
+        "get": "Get!",
+        "all": "ALL",
+        "none": "NONE",
+        "bicycling": "BICYCLING",
+        "in-vehicle": "IN_VEHICLE",
+        "walking": "WALKING",
+        "loading": "Loading...",
+        "select-travel-mode": "Select a travel mode:",
+        "cancel": "Cancel"
+    },
     "metrics": "Metrics",
     "intro": {
         "presentation": "The Fabmob mobility tracker is an open-source solution for collecting, sharing and analysing personal mobility smartphoen tracking data.",
