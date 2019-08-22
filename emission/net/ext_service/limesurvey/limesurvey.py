@@ -33,10 +33,10 @@ class Limesurvey(object):
     def open_api(self):
         self.api = LimeSurvey(url=self.url, username=self.username)
         self.api.open(password=self.password)
-    
+
     def close_api(self):
         session_key_released = self.api.close()
-    
+
     def get_all_surveys(self):
         result = self.api.survey.list_surveys()
         return result
@@ -48,32 +48,32 @@ class Limesurvey(object):
             # Retrieve uuid and convert it in hex to use it as a LimeSurvey invitation token
             token = ecwu.User.fromEmail(email).uuid.hex
             participant_list.append({"email": email, "token": token,"validfrom": time.strftime("%Y-%m-%d %H:%M",time.gmtime())})
-        
+
         # create_token_key = False to disable the automatic generation
-        response = self.api.token.add_participants(survey_id=survey_id, 
+        response = self.api.token.add_participants(survey_id=survey_id,
                                                 participant_data=participant_list,
                                                 create_token_key=False)
         if "status" in response:
             if response["status"] == "No survey participants table":
                 logging.warning("The survey %d as not been configured correctly, please read the doc for more informations" % survey_id)
-            
+
         return response
-    
+
     def add_participants_by_uuid(self, survey_id, uuid_list):
         participant_list = []
 
         for uuid in uuid_list:
             token = uuid.hex
             email = ecwu.User.fromUUID(uuid)._User__email
-            participant_list.append({"email": email, "token": token,"validfrom": time.strftime("%Y-%m-%d %H:%M",time.gmtime())}) 
-        
-        response = self.api.token.add_participants(survey_id=survey_id, 
+            participant_list.append({"email": email, "token": token,"validfrom": time.strftime("%Y-%m-%d %H:%M",time.gmtime())})
+
+        response = self.api.token.add_participants(survey_id=survey_id,
                                                 participant_data=participant_list,
                                                 create_token_key=False)
         if "status" in response:
             if response["status"] == "No survey participants table":
                 logging.warning("The survey %d as not been configured correctly, please read the doc for more informations" % survey_id)
-            
+
         return response
 
     def get_participants_not_answered(self, survey_id):
@@ -101,16 +101,16 @@ class Limesurvey(object):
 
         for survey in surveys:
             try:
-                result = self.api.token.list_participants(survey_id=survey["sid"], 
-                                                            attributes=["completed","validfrom"], 
+                result = self.api.token.list_participants(survey_id=survey["sid"],
+                                                            attributes=["completed","validfrom"],
                                                             conditions={"token":uuid})
-                
+
                 # URL to launch the survey when on the Surveys screen
                 url = self.url_surveys + survey["sid"] + "?token=" + uuid
-                user_surveys.append({"sid": survey["sid"], 
-                                        "title": survey["surveyls_title"], 
+                user_surveys.append({"sid": survey["sid"],
+                                        "title": survey["surveyls_title"],
                                         "expires": survey["expires"],
-                                        "active": survey["active"], 
+                                        "active": survey["active"],
                                         "completed": result[0]["completed"],
                                         "received": result[0]["validfrom"],
                                         "url": url})
@@ -118,5 +118,5 @@ class Limesurvey(object):
             except:
                 logging.warning("No %s in survey %s" % (uuid, survey['sid']))
 
-        logging.debug("User surveys are %s" % user_surveys)
+        logging.debug("There are %s user surveys" % (survey_count, ))
         return {"survey_count": survey_count, "surveys": user_surveys}
