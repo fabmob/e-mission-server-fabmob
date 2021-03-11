@@ -1,3 +1,6 @@
+s 🚧 This repo is replaced by [Tracemob-server](https://github.com/fabmob/tracemob-server)
+
+
 e-mission phone app [FABMOB]
 
 This is the README for e-mission-phone FabMob
