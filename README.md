@@ -1,5 +1,5 @@
-s 🚧 This repo is replaced by [Tracemob-server](https://github.com/fabmob/tracemob-server)
-
+ 🚧 **ARCHIVED PROJECT** This repo is replaced by [Tracemob-server](https://github.com/fabmob/tracemob-server)   
+It has not been updated since December 2010.
 
 e-mission phone app [FABMOB]
 
